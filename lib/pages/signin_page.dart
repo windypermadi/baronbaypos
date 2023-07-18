@@ -71,7 +71,7 @@ class SignInPage extends StatelessWidget {
                     Expanded(child: TextFormField(
                       style: primaryTextStyle,
                       decoration: InputDecoration.collapsed(
-                        hintText: 'Your Email Address',
+                        hintText: 'Your Username',
                         hintStyle: subtitleTextStyle,
                       ),
                     ))

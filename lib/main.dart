@@ -1,3 +1,5 @@
+import 'package:baronbay_pos/pages/home_page.dart';
+import 'package:baronbay_pos/pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'pages/signin_page.dart';
 import 'pages/splash_page.dart';
@@ -15,6 +17,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashPage(),
         '/sign-in': (context) => const SignInPage(),
+        '/home': (context) => const MainPage(),
       },
     );
   }

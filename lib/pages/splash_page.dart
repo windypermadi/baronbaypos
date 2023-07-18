@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:baronbay_pos/gen/assets.gen.dart';
 import '../settings/theme.dart';
 
 class SplashPage extends StatefulWidget {
