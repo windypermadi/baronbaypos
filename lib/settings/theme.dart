@@ -21,7 +21,7 @@ Color blackColor = const Color(0xff2E2E2E);
 Color whiteColor = const Color(0xffFFFFFF);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
-  color: primaryTextColor,
+  color: blackColor,
 );
 
 TextStyle secondaryTextStyle = GoogleFonts.poppins(

@@ -1,11 +1,56 @@
+import 'package:baronbay_pos/providers/auth_provider.dart';
 import 'package:baronbay_pos/settings/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class SignInPage extends StatelessWidget {
+import '../widget/loading_button.dart';
+
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
   @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+
+  TextEditingController usernameController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+  bool isLoading = false;
+
+  @override
   Widget build(BuildContext context) {
+
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
+    handleSignIn() async {
+      setState(() {
+        isLoading = true;
+      });
+
+      if (await authProvider.login(
+        username: usernameController.text,
+        password: passwordController.text,
+      )) {
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamed(context, '/home');
+      } else {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: alertColor,
+            content: const Text(
+              'Gagal login',
+              textAlign: TextAlign.center,
+            ),
+            ),
+        );
+      }
+
+      setState(() {
+        isLoading = false;
+      });
+    }
 
     Widget header(){
       return Container(
@@ -70,6 +115,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     Expanded(child: TextFormField(
                       style: primaryTextStyle,
+                      controller: usernameController,
                       decoration: InputDecoration.collapsed(
                         hintText: 'Your Username',
                         hintStyle: subtitleTextStyle,
@@ -120,6 +166,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     Expanded(child: TextFormField(
                       style: primaryTextStyle,
+                      controller: passwordController,
                       obscureText: true,
                       decoration: InputDecoration.collapsed(
                         hintText: 'Your Password',
@@ -141,9 +188,7 @@ class SignInPage extends StatelessWidget {
             width: double.infinity,
             margin: const EdgeInsets.only(top: 70, left: 70, right: 70),
             child: TextButton(
-              onPressed: (){
-                Navigator.pushNamed(context, '/home');
-              }, 
+              onPressed: handleSignIn, 
               style: TextButton.styleFrom(
                 backgroundColor: primaryColor,
                 shape: RoundedRectangleBorder(
@@ -208,7 +253,8 @@ class SignInPage extends StatelessWidget {
                       children: <Widget>[
                         emailInput(),
                         passwordInput(),
-                        signInButton(),
+                        isLoading ? const LoadingButton() : signInButton(),
+                        // const Spacer(),
                       ],
                     ),
                   ],
