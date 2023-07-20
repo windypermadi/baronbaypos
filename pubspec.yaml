@@ -38,6 +38,8 @@ dependencies:
   provider: ^6.0.5
   http: ^0.13.6
   shared_preferences: ^2.2.0
+  connectivity_plus: ^3.0.6
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +67,7 @@ flutter:
   assets:
     - assets/images/
     - assets/items/
+    - assets/icons/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

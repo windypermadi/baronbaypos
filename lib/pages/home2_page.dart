@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../settings/theme.dart';
+
 class HomePage2 extends StatelessWidget {
   const HomePage2({super.key});
 
@@ -346,7 +348,7 @@ Widget _itemOrder({
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
-        color: const Color(0xff1f2029),
+        color: primaryColor,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -403,7 +405,7 @@ Widget _itemOrder({
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: const Color(0xff1f2029),
+        color: blackColor,
         border: isActive
             ? Border.all(color: Colors.deepOrangeAccent, width: 3)
             : Border.all(color: const Color(0xff1f2029), width: 3),
@@ -417,12 +419,11 @@ Widget _itemOrder({
           const SizedBox(width: 8),
           Text(
             title,
-            style: const TextStyle(
+            style: blackTextStyle.copyWith(
               fontSize: 14,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+              fontWeight: medium
             ),
-          )
+          ),
         ],
       ),
     );
@@ -443,17 +444,14 @@ Widget _itemOrder({
           children: [
             Text(
               title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style:
+                    blackTextStyle.copyWith(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 6),
             Text(
               subTitle,
-              style: const TextStyle(
-                color: Colors.white54,
+              style: TextStyle(
+                color: subtitleColor,
                 fontSize: 10,
               ),
             ),
@@ -471,19 +469,22 @@ Widget _itemOrder({
         width: double.infinity,
         height: 40,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(18),
-          color: const Color(0xff1f2029),
+          border: Border.all(
+            color: blackColor
+          ),
+          borderRadius: BorderRadius.circular(10),
+          color: whiteColor,
         ),
         child: Row(
-          children: const [
+          children: [
             Icon(
               Icons.search,
-              color: Colors.white54,
+              color: subtitleColor,
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Text(
-              'Search menu here...',
-              style: TextStyle(color: Colors.white54, fontSize: 11),
+              'Search Item',
+              style: TextStyle(color: subtitleColor, fontSize: 11),
             )
           ],
         ));

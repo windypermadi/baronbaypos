@@ -2,7 +2,7 @@ import 'package:baronbay_pos/providers/auth_provider.dart';
 import 'package:baronbay_pos/settings/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../widget/loading_button.dart';
 
 class SignInPage extends StatefulWidget {
@@ -23,12 +23,13 @@ class _SignInPageState extends State<SignInPage> {
 
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
 
-    handleSignIn() async {
+    Future<void> handleSignIn() async {
       setState(() {
         isLoading = true;
       });
 
       if (await authProvider.login(
+        context: context,
         username: usernameController.text,
         password: passwordController.text,
       )) {
@@ -43,7 +44,7 @@ class _SignInPageState extends State<SignInPage> {
               'Gagal login',
               textAlign: TextAlign.center,
             ),
-            ),
+          ),
         );
       }
 
@@ -107,7 +108,8 @@ class _SignInPageState extends State<SignInPage> {
               child: Center(
                 child: Row(
                   children: [
-                    Image.asset('assets/images/icon_email.png',
+                    SvgPicture.asset('assets/icons/icon_user.svg',
+                    // Image.asset('assets/icons/user.svg',
                     width: 17,
                     ),
                     const SizedBox(
@@ -158,7 +160,8 @@ class _SignInPageState extends State<SignInPage> {
               child: Center(
                 child: Row(
                   children: [
-                    Image.asset('assets/images/icon_password.png',
+                    SvgPicture.asset('assets/icons/icon_lock.svg',
+                    // Image.asset('assets/images/icon_password.png',
                     width: 17,
                     ),
                     const SizedBox(
@@ -197,7 +200,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
               child: Text(
                 'Sign In',
-                style: primaryTextStyle.copyWith(
+                style: whiteTextStyle.copyWith(
                   fontSize: 16,
                   fontWeight: medium
                 ),
@@ -212,26 +215,28 @@ class _SignInPageState extends State<SignInPage> {
           Expanded(
             flex: 2,
             child: LayoutBuilder(builder: (context, constraints) {
-              return Container(
-                width: constraints.maxWidth,
-                height: constraints.maxHeight,
-                color: primaryColor,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Center(
-                      child: Image.asset('assets/images/image_splash.png',
-                      width: 80,
+              return SingleChildScrollView(
+                child: Container(
+                  width: constraints.maxWidth,
+                  height: constraints.maxHeight,
+                  color: primaryColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Center(
+                        child: Image.asset('assets/images/image_splash.png',
+                        width: 80,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    const Center(
-                      child: Text(
-                          'BARON BAY POS',
-                          style: TextStyle(
-                              fontSize: 24, color: Colors.white)),
-                    ),
-                  ],
+                      const SizedBox(height: 20),
+                      const Center(
+                        child: Text(
+                            'BARON BAY POS',
+                            style: TextStyle(
+                                fontSize: 24, color: Colors.white)),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }),
@@ -239,25 +244,27 @@ class _SignInPageState extends State<SignInPage> {
           Expanded(
             flex: 4,
             child: LayoutBuilder(builder: (context, constraints) {
-              return Container(
-                width: constraints.maxWidth,
-                height: constraints.maxHeight,
-                color: whiteColor,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    header(),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        emailInput(),
-                        passwordInput(),
-                        isLoading ? const LoadingButton() : signInButton(),
-                        // const Spacer(),
-                      ],
-                    ),
-                  ],
+              return SingleChildScrollView(
+                child: Container(
+                  width: constraints.maxWidth,
+                  height: constraints.maxHeight,
+                  color: whiteColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      header(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          emailInput(),
+                          passwordInput(),
+                          isLoading ? const LoadingButton() : signInButton(),
+                          // const Spacer(),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               );
             }),

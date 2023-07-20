@@ -1,5 +1,6 @@
 import 'package:baronbay_pos/pages/home2_page.dart';
 import 'package:baronbay_pos/pages/item_page.dart';
+import 'package:baronbay_pos/settings/theme.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -39,7 +40,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff1f2029),
+      backgroundColor: colorMenu,
       body: Row(
         children: [
           Container(
@@ -52,11 +53,11 @@ class _MainPageState extends State<MainPage> {
             child: Container(
               margin: const EdgeInsets.only(top: 24, right: 12),
               padding: const EdgeInsets.only(top: 12, right: 12, left: 12),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(12),
                     topRight: Radius.circular(12)),
-                color: Color(0xff17181f),
+                color: whiteColor,
               ),
               child: _pageView(),
             ),
@@ -103,10 +104,10 @@ class _MainPageState extends State<MainPage> {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.deepOrangeAccent,
+            color: primaryColor,
           ),
           child: const Icon(
             Icons.fastfood,
@@ -115,10 +116,10 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
         const SizedBox(height: 10),
-        const Text(
+        Text(
           'POSFood',
           style: TextStyle(
-            color: Colors.white,
+            color: blackColor,
             fontSize: 8,
             fontWeight: FontWeight.bold,
           ),
@@ -139,8 +140,8 @@ class _MainPageState extends State<MainPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: pageActive == menu
-                    ? Colors.deepOrangeAccent
-                    : Colors.transparent,
+                    ? primaryColor
+                    : transparentColor,
               ),
               duration: const Duration(milliseconds: 300),
               curve: Curves.slowMiddle,
