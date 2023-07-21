@@ -53,11 +53,12 @@ class _MainPageState extends State<MainPage> {
             child: Container(
               margin: const EdgeInsets.only(top: 24, right: 12),
               padding: const EdgeInsets.only(top: 12, right: 12, left: 12),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(12),
                     topRight: Radius.circular(12)),
-                color: whiteColor,
+                // color: Color(0xffF7F7F7),
+                color: Color(0xffF7F7F7),
               ),
               child: _pageView(),
             ),
@@ -104,7 +105,7 @@ class _MainPageState extends State<MainPage> {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: primaryColor,
@@ -117,7 +118,7 @@ class _MainPageState extends State<MainPage> {
         ),
         const SizedBox(height: 10),
         Text(
-          'POSFood',
+          'BaronPOS',
           style: TextStyle(
             color: blackColor,
             fontSize: 8,
@@ -140,7 +141,7 @@ class _MainPageState extends State<MainPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: pageActive == menu
-                    ? primaryColor
+                    ? const Color(0xff50051E)
                     : transparentColor,
               ),
               duration: const Duration(milliseconds: 300),
@@ -149,12 +150,16 @@ class _MainPageState extends State<MainPage> {
                 children: [
                   Icon(
                     icon,
-                    color: Colors.white,
+                    color: pageActive == menu ? const Color(0xff9F1A49) : const Color(0xff7B5665),
+                    // color: Color(0xff9F1A49),
                   ),
                   const SizedBox(height: 5),
                   Text(
                     menu,
-                    style: const TextStyle(color: Colors.white, fontSize: 10),
+                    style: TextStyle(
+                      color: pageActive == menu ? whiteColor : const Color(0xff7B5665),
+                      // color: Colors.white, 
+                      fontSize: 10),
                   ),
                 ],
               ),

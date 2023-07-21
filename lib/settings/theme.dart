@@ -5,6 +5,7 @@ double defaultMargin = 30.0;
 
 // Color primaryColor = const Color(0xff1C2E80);
 Color primaryColor = const Color(0xffEF1A69);
+Color headerColor = const Color(0xff320617);
 Color secondaryColor = const Color.fromARGB(255, 0, 0, 0);
 Color alertColor = const Color(0xffED6363);
 Color priceColor = const Color(0xff2C96F1);
@@ -60,3 +61,4 @@ FontWeight regular = FontWeight.w400;
 FontWeight medium = FontWeight.w500;
 FontWeight semiBold = FontWeight.w600;
 FontWeight bold = FontWeight.w700;
+FontWeight superBold = FontWeight.w900;
