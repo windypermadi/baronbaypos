@@ -63,6 +63,7 @@ class MainService {
     final result = jsonDecode(response.body);
 
     if (response.statusCode == 400 || response.statusCode == 500) {
+      // ignore: use_build_context_synchronously
       showDialog(
         context: context,
         builder: (context) => dialogView(
@@ -76,6 +77,7 @@ class MainService {
       return;
     }
     if (activetLoading) {
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     }
 
@@ -103,6 +105,7 @@ class MainService {
     final result = jsonDecode(response.body);
 
     if (response.statusCode == 400 || response.statusCode == 500) {
+      // ignore: use_build_context_synchronously
       showDialog(
         context: context,
         builder: (context) => dialogView(
